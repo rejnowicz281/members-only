@@ -1,0 +1,12 @@
+<h1>all da post</h1>
+<hr>
+
+<% @posts.each do |post| %>
+    <ul>
+        <li> <h2> <%= post.title %> </h2> </li>
+        <li> <h3> <%= post.body %> </h3> </li>
+    </ul>
+    <% if signed_in? %>
+        <p> (<%= post.user.name %>) </p>
+    <% end %>
+<% end %>
