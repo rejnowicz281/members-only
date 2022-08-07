@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    before_action :require_login, only: [:new, :create]
     def index
         @posts = Post.all
     end
@@ -20,5 +21,12 @@ class PostsController < ApplicationController
     private
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def require_login
+      unless signed_in?
+        flash[:error] = "You must be signed in to do this action"
+        redirect_to new_user_registration
+      end
     end
 end
