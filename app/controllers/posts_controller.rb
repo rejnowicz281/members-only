@@ -12,7 +12,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
     
         if @post.save
-          redirect_to @post
+          redirect_to root_path
         else
           render :new, status: :unprocessable_entity
         end
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     def require_login
       unless signed_in?
         flash[:error] = "You must be signed in to do this action"
-        redirect_to new_user_registration
+        redirect_to new_user_registration_path
       end
     end
 end
