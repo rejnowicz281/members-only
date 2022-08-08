@@ -1,13 +1,14 @@
-<div class="container">
-    <h1>All the posts</h1>
-    <hr>
+<div class="posts-container m-3">
+    <h1 class="text-center">All Posts</h1>
     <% @posts.each do |post| %>
-        <ul>
-            <li> <h2> <%= post.title %> </h2> </li>
-            <li> <h3> <%= post.body %> </h3> </li>
-        </ul>
-        <% if signed_in? %>
-            <p> (<%= post.user.name %>) </p>
-        <% end %>
+        <div class="card m-3">
+            <div class="card-body">
+                <h2 class="card-title"> <%= post.title %> </h2> 
+                <% if signed_in? %>
+                    <h6 class="card-subtitle text-muted mb-2"> <%= post.user.name %> </h6>
+                <% end %>
+                <p class="card-text"> <%= post.body %> </p> 
+            </div>
+        </div>
     <% end %>
 </div>
