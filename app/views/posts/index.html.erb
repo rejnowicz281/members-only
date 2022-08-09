@@ -1,12 +1,21 @@
 <div class="posts-container m-3">
-    <h1 class="text-center">All Posts</h1>
+    <div class="heading text-center">
+        <h1>All Posts</h1>
+        <h2> <%= link_to "New post", new_post_path, class: "btn btn-primary" %> </h2>
+    </div>
     <% @posts.each do |post| %>
         <div class="card m-3">
+            <div class="card-header text-center">
+                <p class="text-muted m-0">
+                    <% if signed_in? %>
+                        <%= post.user.name %>
+                    <% else %>
+                        <%= link_to "Log in", new_user_session_path %> to see the author of this post
+                    <% end %>
+                </p>
+            </div>
             <div class="card-body">
-                <h2 class="card-title"> <%= post.title %> </h2> 
-                <% if signed_in? %>
-                    <h6 class="card-subtitle text-muted mb-2"> <%= post.user.name %> </h6>
-                <% end %>
+                <h1 class="card-title"> <%= post.title %> </h1> 
                 <p class="card-text"> <%= post.body %> </p> 
             </div>
         </div>
