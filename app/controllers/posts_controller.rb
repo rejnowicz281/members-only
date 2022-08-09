@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
     def require_login
       unless signed_in?
-        flash[:error] = "You must be signed in to do this action"
+        flash[:error] = "You must be logged in to do this action"
         redirect_to new_user_session_path
       end
     end
