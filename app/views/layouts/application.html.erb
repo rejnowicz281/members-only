@@ -12,18 +12,29 @@
 
   <body>
     <div class="container mt-3">
-      <header class="d-flex justify-content-between border-bottom">
-        <h1>PostThat</h1>
-        <nav class="nav">
-          <%= link_to "Homepage", root_path, class: "nav-link" %>
-          <% if signed_in? %>
-            <%= link_to current_user.name, root_path, class: "nav-link" %>
-            <%= link_to "Sign out", destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete } %>
-          <% else %>
-             <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %> 
-             <%= link_to "Log in", new_user_session_path, class: "nav-link" %> 
+      <header class="border-bottom">
+        <div class="header-main d-flex justify-content-between">
+          <h1>PostThat</h1>
+          <nav class="nav">
+            <%= link_to "Homepage", root_path, class: "nav-link" %>
+            <% if signed_in? %>
+              <%= link_to current_user.name, root_path, class: "nav-link" %>
+              <%= link_to "Sign out", destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete } %>
+            <% else %>
+               <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+               <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+            <% end %>
+          </nav>
+        </div>
+        <div class="header-flash">
+          <% if flash.any? %>
+            <% flash.each do |type, msg| %>
+              <div class="alert alert-info">
+                <%= msg %>
+              </div>
+            <% end %>
           <% end %>
-        </nav>
+        </div>
       </header>
       <%= yield %>
     </div>
