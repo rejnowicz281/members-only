@@ -1,21 +1,19 @@
 <%= form_with model: post do |form| %>
-  <div>
+  <div class="form-group">
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
     <% post.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-warning"><%= message %></div>
     <% end %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+    <%= form.text_area :body, class: "form-control" %><br>
     <% post.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-warning"><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.button "Create Post", type: "submit", :class=> "btn btn-primary" %>
 <% end %>
