@@ -2,7 +2,7 @@
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
-    <% pody.errors.full_messages_for(:title).each do |message| %>
+    <% post.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
