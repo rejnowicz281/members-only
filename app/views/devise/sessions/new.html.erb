@@ -18,6 +18,14 @@
     </div>
   <% end %>
 
+  <% if resource.errors.any? %>
+    <div class="errors">
+      <% resource.errors.full_messages.each do |message| %>
+        <p class="text-warning mt-0 mb-3 p-2"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= f.button "Log in", type: "submit", :class=> "btn btn-primary mb-3 mt-3" %>
 <% end %>
 

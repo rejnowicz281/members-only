@@ -24,6 +24,14 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
   </div>
 
+  <% if resource.errors.any? %>
+    <div class="errors">
+      <% resource.errors.full_messages.each do |message| %>
+        <p class="text-warning mt-0 mb-3 p-2"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= f.button "Update", type: "submit", :class=> "btn btn-primary mb-3 mt-3" %>
 <% end %>
 

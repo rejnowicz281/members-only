@@ -7,6 +7,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -18,6 +23,14 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
+
+  <% if resource.errors.any? %>
+    <div class="errors">
+      <% resource.errors.full_messages.each do |message| %>
+        <p class="text-warning mt-0 mb-3 p-2"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
 
   <%= f.button "Sign up", type: "submit", :class=> "btn btn-primary mt-3 mb-3" %>
 <% end %>
